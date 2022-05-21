@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/safiriapp/static/css/main.9f902f67.css",
+    "main.js": "/safiriapp/static/js/main.10bdd16b.js",
+    "static/js/787.5c71a6c6.chunk.js": "/safiriapp/static/js/787.5c71a6c6.chunk.js",
+    "static/media/road.jpg": "/safiriapp/static/media/road.38ac4fb0d1857399577c.jpg",
+    "static/media/bb.jpg": "/safiriapp/static/media/bb.8a85c53ec8619cd8a02e.jpg",
+    "static/media/mmm.jpg": "/safiriapp/static/media/mmm.708153858c3840103507.jpg",
+    "static/media/tt.jpg": "/safiriapp/static/media/tt.1311328e22edcde3dd0d.jpg",
+    "static/media/rr.jpg": "/safiriapp/static/media/rr.a5b3f60d17b5996699ed.jpg",
+    "static/media/el.jpg": "/safiriapp/static/media/el.3a1cbf86aa4fa70b64a8.jpg",
+    "static/media/ll.jpg": "/safiriapp/static/media/ll.71360575daf1f983a3ec.jpg",
+    "static/media/fff.jpg": "/safiriapp/static/media/fff.72a05dad48f2dd65a23c.jpg",
+    "static/media/ttt.jpg": "/safiriapp/static/media/ttt.0e3af03e4866e57dc044.jpg",
+    "static/media/ee.jpg": "/safiriapp/static/media/ee.95cd173d321c74a5d043.jpg",
+    "index.html": "/safiriapp/index.html",
+    "main.9f902f67.css.map": "/safiriapp/static/css/main.9f902f67.css.map",
+    "main.10bdd16b.js.map": "/safiriapp/static/js/main.10bdd16b.js.map",
+    "787.5c71a6c6.chunk.js.map": "/safiriapp/static/js/787.5c71a6c6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9f902f67.css",
+    "static/js/main.10bdd16b.js"
+  ]
+}

@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    color: hwb(43 40% 0%)
+}
+
+/* .showMenuNav{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    visibility: visible;
+    
+}
+
+.hideMenuNav{
+    display: none;
+    visibility: hidden;
+} */
