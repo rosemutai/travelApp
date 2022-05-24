@@ -1,13 +1,42 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import {React, useState} from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import axiosInstance from '../Axios'
 
-const SignUpForm = () => {
-    // const [user, setUser] =  useState("Rose");
+const LoginForm = () => {
 
-    // const handleSubmit = (e) =>{
-    //     e.preventDefault()
+    const navigate = useNavigate()
+    const initialData = Object.freeze({
+        username: '',
+        password: ''
+    })
 
-    // }
+    const [user, setUser] =  useState(initialData);
+
+    const handleInput = (e) =>{
+        const {name, value} = e.target
+        setUser({
+            ...user,
+            [name]: value
+        })
+    }
+
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+
+        axiosInstance.post('login/', {
+            username: user.username,
+            password: user.password
+        })
+        .then((res) =>{
+            localStorage.setItem('access_token', res.data.access)
+            localStorage.setItem('refresh_token', res.data.refresh)
+            axiosInstance.defaults.headers['Authorization'] = 
+                'JWT ' + localStorage.getItem('access_token')
+            navigate('/')
+        })
+        
+
+    }
 
 
   return (
@@ -18,13 +47,13 @@ const SignUpForm = () => {
         
         
         <div className='form bg-teal w-11/12 h-3/6  my-4 mx-auto md:w-40 '>
-            <form className='w-full h-full flex flex-col justify-evenly shadow-md shadow-teal rounded-one'>
+            <form onSubmit={handleSubmit} className='w-full h-full flex flex-col justify-evenly shadow-md shadow-teal rounded-one'>
 
-                <div className='email'>
+                <div className='username'>
                     {/* <label className='text-gray-50 ml-2'>Email Address</label> */}
                     <input className='w-11/12 mx-auto p-2 focus:outline-none bg-teal text-gray-50
                         border-b-2 border-yellow-500 hover:shadow hover:shadow-yellow-500 placeholder-gray-50'  
-                        type="text" name="lastname" placeholder="Enter your Email" 
+                        type="text" name="username" placeholder="Enter username" value={user.username} onChange={handleInput}
                     />
                 </div>
 
@@ -32,7 +61,7 @@ const SignUpForm = () => {
                     {/* <label className='text-gray-50 ml-2'>Password</label> */}
                     <input className='w-11/12 mx-auto p-2 focus:outline-none bg-teal text-gray-50
                         border-b-2 border-yellow-500 hover:shadow hover:shadow-yellow-500 placeholder-gray-50' 
-                        type="password" name="password1" placeholder="Password"
+                        type="password" name="password" placeholder="Password" value={user.password} onChange={handleInput}
                     />
                 </div>
 
@@ -63,7 +92,7 @@ const SignUpForm = () => {
   )
 }
 
-export default SignUpForm
+export default LoginForm
 
 
 
