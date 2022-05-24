@@ -1,39 +1,53 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import axiosInstance from '../Axios'
 
 
 const SignUpForm = () => {
-
-    const [error, setError] = useState(false)
-    const [user, setUser] = useState({
+    const navigate = useNavigate()
+    const initialFormData = Object.freeze({
         firstname: "",
         lastname: "",
         username: "",
         email: "",
-        password1: "",
+        password: "",
         password2: ""
     })
+
+    const [error, setError] = useState(false)
+    const [user, setUser] = useState(initialFormData)
     
-    const handleUserInput = e =>{
+    const handleUserInput = (e) =>{
         const {name,value} = e.target
         setUser({
             ...user,
-            [name]:value
+            [name]:value.trim()
         })
     }
 
     const registerUser = (e)=>{
         e.preventDefault()
-        const {firstname, lastname, username,email,password1,password2} = user
-        if (firstname && lastname && username && email && password1 && password2){
-            axios({
-                method: 'POST',
-                url: 'http://localhost:8000/auth/signup/',
-                data: user
-            }) 
-            setError(false) 
-            resetForm()
+        // console.log(user)
+        
+        if (user.firstname && user.lastname && user.username && user.email && user.password && user.password2){
+            
+                axiosInstance.post('signup/', {
+                    firstname: user.firstname, 
+                    lastname: user.lastname, 
+                    username: user.username,
+                    email: user.email,
+                    password: user.password,
+                    password2: user.password2
+                })
+                // setError(false) 
+                // resetForm()
+                .then((res) =>{
+                    navigate('login/')
+                    console.log(res)
+                    console.log(res.data)
+
+                })
         }
         
         else{
@@ -103,7 +117,7 @@ const SignUpForm = () => {
                     <label className='text-gray-50 ml-2'>Password</label>
                     <input className='w-11/12 mx-auto p-2 focus:outline-none bg-teal text-gray-50
                         border-b-2 border-yellow-500 hover:shadow hover:shadow-yellow-500' type="password"
-                        name="password1" value={user.password1 || ""} onChange={handleUserInput}
+                        name="password" value={user.password || ""} onChange={handleUserInput}
                     />
                 </div>
 
