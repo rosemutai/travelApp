@@ -93,7 +93,7 @@ function NavBar() {
                   :
                     <>
                       <button className='button mb-3'>
-                        <Link to='/signup' className='bg-yellow-500 py-2 px-4  rounded-one text-center text-gray-50 tracking-wider
+                        <Link to='/login' className='bg-yellow-500 py-2 px-4  rounded-one text-center text-gray-50 tracking-wider
                         hover:shadow-md  hover:shadow-yellow-500 md:ml-12 md:mr-3'>LOGIN</Link>
                       </button>
                       <button className='button mb-3'>
