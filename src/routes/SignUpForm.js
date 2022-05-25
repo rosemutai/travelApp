@@ -7,8 +7,8 @@ import axiosInstance from '../Axios'
 const SignUpForm = () => {
     const navigate = useNavigate()
     const initialFormData = Object.freeze({
-        firstname: "",
-        lastname: "",
+        first_name: "",
+        last_name: "",
         username: "",
         email: "",
         password: "",
@@ -30,24 +30,25 @@ const SignUpForm = () => {
         e.preventDefault()
         // console.log(user)
         
-        if (user.firstname && user.lastname && user.username && user.email && user.password && user.password2){
-            
+        if (user.first_name && user.last_name && user.username && user.email && user.password && user.password2){
                 axiosInstance.post('signup/', {
-                    firstname: user.firstname, 
-                    lastname: user.lastname, 
+                    first_name: user.first_name, 
+                    last_name: user.last_name, 
                     username: user.username,
                     email: user.email,
                     password: user.password,
                     password2: user.password2
                 })
-                // setError(false) 
-                // resetForm()
+                
                 .then((res) =>{
-                    navigate('login/')
+                    navigate('/login')
                     console.log(res)
                     console.log(res.data)
 
                 })
+
+                setError(false) 
+                resetForm()
         }
         
         else{
@@ -85,7 +86,7 @@ const SignUpForm = () => {
                     <label className='text-gray-50 ml-2'>First Name</label>
                     <input className='w-11/12 my-0 mx-auto p-2 focus:outline-none bg-teal text-gray-50
                         border-b-2 border-yellow-500 hover:shadow hover:shadow-yellow-500' type="text"
-                        name="firstname" value={user.firstname || ""} onChange={handleUserInput}
+                        name="first_name" value={user.first_name || ""} onChange={handleUserInput}
                     />
                 </div>
 
@@ -93,7 +94,7 @@ const SignUpForm = () => {
                     <label className='text-gray-50 ml-2'>Last Name</label>
                     <input className='w-11/12 my-0 mx-auto p-2 focus:outline-none bg-teal text-gray-50
                         border-b-2 border-yellow-500 hover:shadow hover:shadow-yellow-500' type="text"
-                        name="lastname" value={user.lastname || ""} onChange={handleUserInput}
+                        name="last_name" value={user.last_name || ""} onChange={handleUserInput}
                     />
                 </div>
 
