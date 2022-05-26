@@ -7,7 +7,7 @@ import '../index.css'
 
 function NavBar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   
 
 
@@ -41,18 +41,20 @@ function NavBar() {
           <Link className='font-bold mr-4 text-gray-50 hover:text-yellow-500 ' to='/safiriapp'>Home</Link>
           <Link className='font-bold mr-4 text-gray-50 hover:text-yellow-500' to='/about'>About</Link>
           <Link className='font-bold mr-4 text-gray-50 hover:text-yellow-500 ' to='/contact'>Contact Us</Link>
-          <Link className='font-bold text-gray-50 hover:text-yellow-500 ' to='/explore'>Explore</Link>
-          {isLoggedIn  ?
+          <Link className='font-bold mr-4 text-gray-50 hover:text-yellow-500 ' to='/explore'>Explore</Link>
+          <Link className='font-bold mr-4 text-gray-50 hover:text-yellow-500 ' to='/profile'>My Profile</Link>
+          
+          {/* {isLoggedIn  ? */}
           
               <button className='button mb-3'>
-                <Link to='/signup' className='bg-yellow-500 py-2 px-4  rounded-one text-center text-gray-50 tracking-wider
+                <Link to='/login' className='bg-yellow-500 py-2 px-4  rounded-one text-center text-gray-50 tracking-wider
                   hover:shadow-md hover:shadow-yellow-500 md:ml-12 md:mr-3'>LOGOUT
                 </Link>
               </button>
-          :
+          {/* : */}
             <>
             <button className='button mb-3'>
-              <Link to='/signup' className='bg-yellow-500 py-2 px-4  rounded-one text-center text-gray-50 tracking-wider
+              <Link to='/login' className='bg-yellow-500 py-2 px-4  rounded-one text-center text-gray-50 tracking-wider
               hover:shadow-md  hover:shadow-yellow-500 md:ml-12 md:mr-3'>LOGIN</Link>
             </button>
             <button className='button mb-3'>
@@ -63,7 +65,7 @@ function NavBar() {
             </>
             
             
-          }
+          {/* } */}
             
       </div>
 
@@ -82,15 +84,16 @@ function NavBar() {
                 <Link className='font-normal mr-4 text-gray-50 hover:text-yellow-500 hover:font-bold' to='/safiriapp'>Home</Link>
                 <Link className='font-normal mr-4 text-gray-50 hover:text-yellow-500 hover:font-bold' to='/about'>About</Link>
                 <Link className='font-normal mr-4 text-gray-50 hover:text-yellow-500 hover:font-bold' to='/contact'>Contact Us</Link>
-                <Link className='font-normal text-gray-50 hover:text-yellow-500 hover:font-bold' to='/explore'>Explore</Link>
-                {isLoggedIn
-                  ? 
+                <Link className='font-normal mr-4 text-gray-50 hover:text-yellow-500 hover:font-bold' to='/explore'>Explore</Link>
+                <Link className='font-bold mr-4 text-gray-50 hover:text-yellow-500 ' to='/profile'>My Profile</Link>
+                {/* {isLoggedIn
+                  ?  */}
                     <button className='button mb-3'>
-                      <Link to='/signup' className='bg-yellow-500 py-2 px-4  rounded-one text-center text-gray-50 tracking-wider
+                      <Link to='/logout' className='bg-yellow-500 py-2 px-4  rounded-one text-center text-gray-50 tracking-wider
                         hover:shadow-md hover:shadow-yellow-500 md:ml-12 md:mr-3'>LOGOUT
                       </Link>
                     </button>
-                  :
+                  {/* : */}
                     <>
                       <button className='button mb-3'>
                         <Link to='/login' className='bg-yellow-500 py-2 px-4  rounded-one text-center text-gray-50 tracking-wider
@@ -102,7 +105,7 @@ function NavBar() {
                       </button>
               
                     </>
-                }
+                {/* } */}
               </div>
                
   
@@ -120,32 +123,3 @@ function NavBar() {
 
 export default NavBar
 
-
-
-
-// larger desktops
-
-// return (
-//     <div className='w-full h-16 flex items-center justify-between bg-red-600'>
-//       <div className='logo mx-3'>
-//         <h2 className='font-bold mr-3 text-gray-50'>safiriApp</h2>
-//       </div>
-
-//       <div className='menu mr-4'>
-       
-//         <Link className='font-normal mr-4 text-gray-50 hover:text-yellow-500 hover:font-bold' to='/'>Home</Link>
-//         <Link className='font-normal mr-4 text-gray-50 hover:text-yellow-500 hover:font-bold' to='/about'>About</Link>
-//         <Link className='font-normal mr-4 text-gray-50 hover:text-yellow-500 hover:font-bold' to='/contact'>Contact Us</Link>
-//         <Link className='font-normal text-gray-50 hover:text-yellow-500 hover:font-bold' to='/explore'>Explore</Link>
-//       </div>
-
-//       <div className='buttons mr-4'>
-//         <Link to='/signup' className='bg-yellow-500 py-2 px-4 mr-3 rounded-one text-center text-gray-50 tracking-wider
-//         hover:shadow-md hover:tracking-widest hover:shadow-yellow-500'>SIGN UP</Link>
-//         {/* <button><a className='font-normal text-gray-50' href='#'>Signin</a></button> */}
-//       </div>
-
-        
-
-//     </div>
-//   )
