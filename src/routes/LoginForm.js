@@ -1,9 +1,10 @@
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axiosInstance from '../Axios'
 
 const LoginForm = () => {
 
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
     const navigate = useNavigate()
     const initialData = Object.freeze({
         username: '',
@@ -33,10 +34,15 @@ const LoginForm = () => {
             axiosInstance.defaults.headers['Authorization'] = 
                 'JWT ' + localStorage.getItem('access_token')
             navigate('/safiriapp')
+            setIsLoggedIn(true)
         })
-        
-
     }
+
+    // useEffect(() => {
+    //      handleSubmit();
+    // })
+
+    
 
 
   return (
