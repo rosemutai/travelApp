@@ -15,7 +15,7 @@ function Explore() {
         {/* <h3 className='text-teal text-center text-2xl md:none'>Explore</h3> */}
         <NavBar />
         <div className='cards-section mt-24 md:w-11/12 md:mx-auto md:flex md:flex-row 
-            md:flex-wrap bg-slate-50 md:h-full md:mt-32'>
+            md:flex-wrap bg-slate-50  md:mt-32'>
             <div className='card w-11/12 mx-auto mb-3 md:w-96 md:h-96 md:relative'>
                 <img className='w-full md:h-full' src={ee} alt="aeroplane"/>
                 <h3 className='opacity-0 md:hover:opacity-50  md:absolute md:z-10 md:w-full md:text-teal text-2xl
@@ -54,10 +54,6 @@ function Explore() {
             </div>
         </div>
         
-        
-       
-       
-       
        
        
        
