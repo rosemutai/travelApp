@@ -1,4 +1,4 @@
-import React from 'react'
+import {React, useEffect, useStat} from 'react'
 import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { Transition } from '@headlessui/react';
@@ -7,10 +7,19 @@ import '../index.css'
 
 function NavBar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState('');
+
+  
   
 
+// useEffect(() =>{
+//   const loggedInUser = localStorage.getItem('access_token')
+//   if (loggedInUser) {
+//     setIsLoggedIn(loggedInUser)
+//   }
+  
 
+// }, [])
 
   return (
     <div className='w-full h-full absolute flex flex-col items-center justify-between
@@ -44,14 +53,14 @@ function NavBar() {
           <Link className='font-bold mr-4 text-gray-50 hover:text-yellow-500 ' to='/explore'>Explore</Link>
           <Link className='font-bold mr-4 text-gray-50 hover:text-yellow-500 ' to='/profile'>My Profile</Link>
           
-          {/* {isLoggedIn  ? */}
+          {isLoggedIn  ?
           
               <button className='button mb-3'>
                 <Link to='/login' className='bg-yellow-500 py-2 px-4  rounded-one text-center text-gray-50 tracking-wider
                   hover:shadow-md hover:shadow-yellow-500 md:ml-12 md:mr-3'>LOGOUT
                 </Link>
               </button>
-          {/* : */}
+           :
             <>
             <button className='button mb-3'>
               <Link to='/login' className='bg-yellow-500 py-2 px-4  rounded-one text-center text-gray-50 tracking-wider
@@ -65,7 +74,7 @@ function NavBar() {
             </>
             
             
-          {/* } */}
+          } 
             
       </div>
 
