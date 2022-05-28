@@ -59,5 +59,6 @@ class ProfileSerialzer(serializers.ModelSerializer):
         instance.bio = validated_data.get('bio', instance.bio)
         instance.profile_pic = validated_data.get('profile_pic', instance.profile_pic)
         instance.birth_date = validated_data.get('birth_date', instance.birth_date)
+        instance.save()
         return instance
 
