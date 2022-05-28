@@ -8,7 +8,7 @@ from rest_framework.validators import UniqueValidator, ValidationError
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
-
+from .models import Profile
 # class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 #     @classmethod
 #     def get_token(cls, user):
@@ -47,3 +47,17 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
+
+class ProfileSerialzer(serializers.ModelSerializer):
+    following= serializers.IntegerField(read_only=True)
+    followers= serializers.IntegerField(read_only=True)
+    class Meta:
+        model = Profile
+        field = ('bio', 'profile_pic', 'followers', 'following', 'birth_date' )
+
+    def update(self, instance, validated_data):
+        instance.bio = validated_data.get('bio', instance.bio)
+        instance.profile_pic = validated_data.get('profile_pic', instance.profile_pic)
+        instance.birth_date = validated_data.get('birth_date', instance.birth_date)
+        return instance
+
