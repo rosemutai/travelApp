@@ -37,7 +37,7 @@ const LoginForm = () => {
                 
             setCurrentUser(res.data)
             console.log(res.data)
-            navigate('/profile')
+            navigate('/safiriapp')
             setIsLoggedIn(true)
         })
     }
