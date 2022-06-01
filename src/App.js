@@ -9,7 +9,6 @@ import Explore from './routes/Explore'
 import AboutUs from './routes/AboutUs';
 import Contact from './routes/Contact';
 import Profile from './routes/Profile';
-//import UserContext from './components/User';
 export const AuthContext = createContext()
 
 
@@ -28,6 +27,7 @@ const reducer = (state, action) =>{
       //localStorage.setItem('username', JSON.stringify(action.payload.config.data.username))
       localStorage.setItem('access_token', JSON.stringify(action.payload.access))
       localStorage.setItem('refresh_token', JSON.stringify(action.payload.refresh))
+      
       return {
         ...state,
         isAuthenticated: true,
@@ -63,17 +63,9 @@ function App() {
         <BrowserRouter >
           <Routes>
             <Route path='/safiriapp' element={<Home/>} ></Route>
-
-            {state.isAuthenticated ? 
-              <Route path='/logout' element={<LogOut />}></Route>
-            :
-              <>
-                <Route path='/signup' element={<SignUpForm/>}></Route>
-                <Route path='/login' element={<LoginForm/>}></Route>
-              </>
-            
-            }
-            
+            <Route path='/logout' element={<LogOut />}></Route>
+            <Route path='/signup' element={<SignUpForm/>}></Route>
+            <Route path='/login' element={<LoginForm/>}></Route>
             <Route path='/explore' element={<Explore />}></Route>
             <Route path='/about' element={<AboutUs />}></Route>
             <Route path='/contact' element={<Contact />}></Route>
