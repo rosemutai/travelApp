@@ -4,14 +4,15 @@ import { Link } from 'react-router-dom'
 import { Transition } from '@headlessui/react';
 import '../index.css'
 import { AuthContext } from '../App';
-// import UserContext from './User';
+
 
 
 
 function NavBar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState('');
-  const {state: authState} = useContext(AuthContext)
+  //const [isLoggedIn, setIsLoggedIn] = useState('');
+  const {state} = useContext(AuthContext)
+  
 //console.log(user.state.username)
 
 
@@ -47,16 +48,18 @@ function NavBar() {
           <Link className='font-bold mr-4 text-gray-50 hover:text-yellow-500 ' to='/explore'>Explore</Link>
           <Link className='font-bold mr-4 text-gray-50 hover:text-yellow-500 ' to='/profile'>My Profile</Link>
           
-          {user.state.username ?
+          {state.isAuthenticated &&
           
-              <h5>hello {user.state.username}</h5> |<button className='button mb-3'>
+              <button className='button mb-3'>
                 <Link to='/login' className='bg-yellow-500 py-2 px-4  rounded-one text-center text-gray-50 tracking-wider
                   hover:shadow-md hover:shadow-yellow-500 md:ml-12 md:mr-11'>LOGOUT
                 </Link>
                 
               </button>
-            : 
+          }
 
+            
+            {!state.isAuthenticated &&
             <>
             <button className='button mb-3'>
               <Link to='/login' className='bg-yellow-500 py-2 px-4  rounded-one text-center text-gray-50 tracking-wider
@@ -68,9 +71,8 @@ function NavBar() {
             </button>
               
             </>
+            }
             
-            
-          }
             
       </div>
 
@@ -91,7 +93,7 @@ function NavBar() {
                 <Link className='font-normal mr-4 text-gray-50 hover:text-yellow-500 hover:font-bold' to='/contact'>Contact Us</Link>
                 <Link className='font-normal mr-4 text-gray-50 hover:text-yellow-500 hover:font-bold' to='/explore'>Explore</Link>
                 <Link className='font-bold mr-4 text-gray-50 hover:text-yellow-500 ' to='/profile'>My Profile</Link>
-                {user.state.username
+                {state.refresh_token
                   ? 
                      <button className='button mb-3'>
                       <Link to='/logout' className='bg-yellow-500 py-2 px-4  rounded-one text-center text-gray-50 tracking-wider
