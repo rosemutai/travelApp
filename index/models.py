@@ -18,6 +18,14 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.email
 
+    def add_follower(self, request):
+        new_follower = self.followers + 1
+        new_follower.save()
+
+    def following(self, request):
+        new_follow = self.following + 1
+        new_follow.save()
+
 @receiver(post_save, sender=User)
 def update_profile(sender, instance, created, **kwargs):
     if created:
