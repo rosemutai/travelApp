@@ -3,10 +3,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../App'
 import axiosInstance from '../Axios'
 
-
 const LoginForm = () => {
 
-    const { dispatch } = useContext(AuthContext)
+    const { dispatch, state } = useContext(AuthContext)
+    console.log(state)
     const navigate = useNavigate()
     const initialState = {
         username: '',
@@ -26,24 +26,19 @@ const LoginForm = () => {
         })
     }
 
-
     // on form submit 
     const handleSubmit = (e) =>{
         e.preventDefault()
-
         setUser({
             ...user,
             isSubmitting: true,
             errorMessage: null
         })
 
-
         axiosInstance.post('login/', {
             username: user.username,
             password: user.password
         })
-
-        
 
         .then(res =>{
             console.log(res)
@@ -52,6 +47,8 @@ const LoginForm = () => {
                 payload: res.data
             })
             navigate('/safiriapp')
+            console.log("I am logged in " + res.data.refresh)
+            console.log(state)
         })
 
         .catch(error =>{
@@ -73,9 +70,9 @@ const LoginForm = () => {
         // })
     }
 
-    // useEffect(() => {
-    //      handleSubmit();
-    // })
+    useEffect(() => {
+         handleSubmit();
+    })
 
     
 
