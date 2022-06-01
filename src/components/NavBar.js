@@ -10,9 +10,9 @@ import { AuthContext } from '../App';
 
 function NavBar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState('');
-  const user = useContext(AuthContext)
-  console.log(user.state.username)
+  const [isLoggedIn, setIsLoggedIn] = useState('');
+  const {state: authState} = useContext(AuthContext)
+//console.log(user.state.username)
 
 
   return (
