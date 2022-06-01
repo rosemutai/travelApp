@@ -9,10 +9,7 @@ function LogOut() {
     const { dispatch } = useContext(AuthContext)
    
     useEffect(() => {
-        axiosInstance.post('logout/',{
-            refresh_token: localStorage.getItem('refresh_token'),
-           
-        })
+        axiosInstance.post('logout/')
         .then(res =>{
             console.log(res)
             dispatch({
