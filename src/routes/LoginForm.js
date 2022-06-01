@@ -1,19 +1,23 @@
-import {React, useState, useEffect} from 'react'
+import {React, useState, useEffect, useContext} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../App'
 import axiosInstance from '../Axios'
+
 
 const LoginForm = () => {
 
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const { dispatch } = useContext(AuthContext)
     const navigate = useNavigate()
-    const initialData = Object.freeze({
+    const initialState = {
         username: '',
-        password: ''
-    })
+        password: '',
+        isSubmitting: false,
+        errorMessage: null
+    }
 
-    const [user, setUser] =  useState(initialData);
-    const [currentUser, setCurrentUser] = useState('')
-
+    const [user, setUser] =  useState(initialState);
+    
+    // on input change
     const handleInput = (e) =>{
         const {name, value} = e.target
         setUser({
@@ -22,24 +26,51 @@ const LoginForm = () => {
         })
     }
 
+
+    // on form submit 
     const handleSubmit = (e) =>{
         e.preventDefault()
+
+        setUser({
+            ...user,
+            isSubmitting: true,
+            errorMessage: null
+        })
+
 
         axiosInstance.post('login/', {
             username: user.username,
             password: user.password
         })
-        .then((res) =>{
-            localStorage.setItem('access_token', res.data.access)
-            localStorage.setItem('refresh_token', res.data.refresh)
-            axiosInstance.defaults.headers['Authorization'] = 
-                'JWT ' + localStorage.getItem('access_token')
-                
-            setCurrentUser(res.data)
-            console.log(res.data)
+
+        
+
+        .then(res =>{
+            console.log(res)
+            dispatch({
+                type: "LOGIN",
+                payload: res.data
+            })
             navigate('/safiriapp')
-            setIsLoggedIn(true)
         })
+
+        .catch(error =>{
+            setUser({
+                ...user,
+                isSubmitting: false,
+                errorMessage: error.message || error.statusText
+            })
+        })
+        // .then((res) =>{
+        //     localStorage.setItem('access_token', res.data.access)
+        //     localStorage.setItem('refresh_token', res.data.refresh)
+        //     axiosInstance.defaults.headers['Authorization'] = 
+        //         'JWT ' + localStorage.getItem('access_token')
+
+        //     console.log(res.data)
+        //     navigate('/safiriapp')
+            
+        // })
     }
 
     // useEffect(() => {
@@ -74,6 +105,10 @@ const LoginForm = () => {
                         type="password" name="password" placeholder="Password" value={user.password} onChange={handleInput}
                     />
                 </div>
+
+                {user.errorMessage && (
+                    <span className="form-error">{user.errorMessage}</span>
+                )}
 
                 <button className='bg-yellow-500 w-11/12 my-3 ml-1 p-2 text-gray-50 text-widest font-bold
                 hover:shadow-md hover:tracking-widest hover:shadow-yellow-500' type='submit'>Sign In</button>
