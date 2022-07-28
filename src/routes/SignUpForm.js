@@ -28,7 +28,7 @@ const SignUpForm = () => {
 
     const registerUser = (e)=>{
         e.preventDefault()
-        // console.log(user)
+        
         
         if (user.first_name && user.last_name && user.username && user.email && user.password && user.password2){
                 axiosInstance.post('signup/', {
@@ -59,12 +59,6 @@ const SignUpForm = () => {
     const resetForm = () =>{
         setUser('')  
     }
-
-    useEffect(() => {
-        registerUser()
-    });
-
-    
 
 
   return (

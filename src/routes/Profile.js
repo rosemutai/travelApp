@@ -1,4 +1,5 @@
-import {React, useState} from 'react'
+import {React, useState, useContext} from 'react'
+import { AuthContext } from '../App'
 import ee from '../images/ee.jpg'
 import bb from '../images/bb.jpg'
 import el from '../images/el.jpg'
@@ -8,6 +9,14 @@ import rr from '../images/rr.jpg'
 
 const Profile = () => {
     const [numberOfLikes, setNumberOfLikes] = useState(12);
+    const user  = useContext(AuthContext);
+
+    console.log(user.userState.isAuthenticated)
+
+    const likePost = () =>{
+        setNumberOfLikes(prevLikes => prevLikes + 1)
+
+    }
     return (
         <div className='user-profile flex flex-col bg-slate-50 text-gray-50 w-full h-screen'>
             <div className='image-followersection w-full bg-teal flex flex-col '>
@@ -50,6 +59,7 @@ const Profile = () => {
             </div>
             <div className='card w-4/12  mb-3 md:w-96 md:h-96 md:relative'>
                 <img className='w-full md:h-full' src={el} alt="aeroplane"/>
+                <div><i class="far fa-heart text-2xl mr-2"></i></div>
                 <h3 className='opacity-0 md:hover:opacity-50  md:absolute md:z-10 md:w-full md:text-teal text-2xl
                     md:inset-0 md:bg-slate-50 md:text-center md:flex md:justify-center md:items-center
                     transition-all duration-300 ease-in' ><i class="far fa-heart text-2xl mr-2"></i>{numberOfLikes}</h3>

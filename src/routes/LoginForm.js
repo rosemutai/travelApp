@@ -1,12 +1,12 @@
-import {React, useState, useEffect, useContext} from 'react'
+import {React, useState, useContext} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../App'
 import axiosInstance from '../Axios'
 
 const LoginForm = () => {
 
-    const { dispatch, state } = useContext(AuthContext)
-    console.log(state)
+    const {userState, dispatch} = useContext(AuthContext)
+    // console.log(userState)
     const navigate = useNavigate()
     const initialState = {
         username: '',
@@ -48,7 +48,7 @@ const LoginForm = () => {
             })
             navigate('/safiriapp')
             console.log("I am logged in " + res.data.refresh)
-            console.log(state)
+            console.log(userState)
         })
 
         .catch(error =>{
@@ -58,23 +58,8 @@ const LoginForm = () => {
                 errorMessage: error.message || error.statusText
             })
         })
-        // .then((res) =>{
-        //     localStorage.setItem('access_token', res.data.access)
-        //     localStorage.setItem('refresh_token', res.data.refresh)
-        //     axiosInstance.defaults.headers['Authorization'] = 
-        //         'JWT ' + localStorage.getItem('access_token')
-
-        //     console.log(res.data)
-        //     navigate('/safiriapp')
-            
-        // })
+       
     }
-
-    useEffect(() => {
-         handleSubmit();
-    })
-
-    
 
 
   return (

@@ -1,4 +1,4 @@
-import { useReducer, useContext, createContext } from 'react';
+import { useReducer, createContext } from 'react';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import './index.css'
 import Home from './components/Home'
@@ -50,13 +50,13 @@ const reducer = (state, action) =>{
 
 function App() {
 
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [userState, dispatch] = useReducer(reducer, initialState)
   return (
     <div className="App w-full h-full bg-slate-50">
 
       <AuthContext.Provider 
         value={{
-          state,
+          userState,
           dispatch
         }}>
 
