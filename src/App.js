@@ -62,7 +62,7 @@ function App() {
 
         <BrowserRouter >
           <Routes>
-            <Route path='/safiriapp' element={<Home/>} ></Route>
+            <Route path='/' element={<Home/>} ></Route>
             <Route path='/logout' element={<LogOut />}></Route>
             <Route path='/signup' element={<SignUpForm/>}></Route>
             <Route path='/login' element={<LoginForm/>}></Route>
