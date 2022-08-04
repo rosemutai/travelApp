@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import axiosInstance from '../Axios'
 
 
@@ -31,7 +30,8 @@ const SignUpForm = () => {
         
         
         if (user.first_name && user.last_name && user.username && user.email && user.password && user.password2){
-                axiosInstance.post('signup/', {
+                // axiosInstance.post('signup/', 
+                console.log({
                     first_name: user.first_name, 
                     last_name: user.last_name, 
                     username: user.username,

@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React from 'react'
 import { useState } from 'react';
 import NavBar from '../components/NavBar'
@@ -29,8 +29,9 @@ const Contact = () => {
 
     const contactUs = (e) =>{
         e.preventDefault()
-        axios.post('http://localhost:5000/contact')
-        .then((res) =>{console.log(res.data)})
+        // axios.post('http://localhost:5000/contact')
+        // .then((res) =>{console.log(res.data)})
+        console.log("contact us")
 
     }
 

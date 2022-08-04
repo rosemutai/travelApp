@@ -9,7 +9,8 @@ function LogOut() {
     const { dispatch } = useContext(AuthContext)
    
     useEffect(() => {
-        axiosInstance.post('logout/')
+        // axiosInstance.post('logout/')
+        console.log("Log out")
         .then(res =>{
             console.log(res)
             dispatch({

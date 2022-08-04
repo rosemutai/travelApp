@@ -35,10 +35,10 @@ const LoginForm = () => {
             errorMessage: null
         })
 
-        axiosInstance.post('login/', {
-            username: user.username,
-            password: user.password
-        })
+        // axiosInstance.post('login/', {
+        //     username: user.username,
+        //     password: user.password
+        // })
 
         .then(res =>{
             console.log(res)
